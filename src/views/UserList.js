@@ -32,7 +32,7 @@ export default props => {
           name="edit"
           size={25}
           color="orange"
-          onPress={() => console.warn('foi')}
+          onPress={() => props.navigation.navigate('UserForm', user)}
         />
         <ListItem.Chevron
           name="delete"
