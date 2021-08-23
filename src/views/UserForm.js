@@ -1,26 +1,47 @@
 import React from 'react';
 import {useState} from 'react';
 import {StyleSheet} from 'react-native';
-import {View, Text, TextInput} from 'react-native';
+import {View, Text, TextInput, Button} from 'react-native';
 
 export default ({route, navigation}) => {
   const [user, setUser] = useState(route.params ? route.params : {});
 
   return (
     <View style={styles.form}>
-      <Text>Name</Text>
+      <Text>Nome</Text>
       <TextInput
+        style={styles.input}
         onChangeText={name => setUser({...user, name})}
         placeholder="Informe o nome"
         value={user.name}
+      />
+
+      <Text>Email</Text>
+      <TextInput
         style={styles.input}
+        onChangeText={email => setUser({...user, email})}
+        placeholder="Informe o Email"
+        value={user.email}
+      />
+      <Text>URL do Avatar</Text>
+      <TextInput
+        style={styles.input}
+        onChangeText={avatarUrl => setUser({...user, avatarUrl})}
+        placeholder="Informe a URL do Avatar"
+        value={user.avatarUrl}
+      />
+      <Button
+        title="Salvar"
+        onPress={() => {
+          navigation.goBack();
+        }}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  form:{
+  form: {
     padding: 12,
   },
   input: {
